@@ -6,9 +6,9 @@ if x%1x == xx (
     pause
     pushd
     cd \dsvm\notebooks
-    for %%l in (1,1,25) do setup_notebooks %%l
+    for /l %%l in (1,1,25) do call %0 %%l
     popd
 ) ELSE (
     mkdir User%1
-    copy notebooks\*.ipynb User%1
+    copy NeuroWorkshop\*.ipynb User%1
 )
