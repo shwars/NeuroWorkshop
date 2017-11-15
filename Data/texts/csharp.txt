@@ -1,0 +1,4667 @@
+﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// Represents face stored in FaceList or Person
+    /// </summary>
+    public class AddPersistedFaceResult
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the persisted face identifier.
+        /// </summary>
+        /// <value>
+        /// The persisted face identifier.
+        /// </value>
+        public Guid PersistedFaceId
+        {
+            get;
+            set;
+        }
+
+        #endregion Properties
+    }
+}﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The identified candidate entity.
+    /// </summary>
+    public class Candidate
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the person identifier.
+        /// </summary>
+        /// <value>
+        /// The person identifier.
+        /// </value>
+        public Guid PersonId
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the confidence.
+        /// </summary>
+        /// <value>
+        /// The confidence.
+        /// </value>
+        public double Confidence
+        {
+            get;
+            set;
+        }
+
+        #endregion Properties
+    }
+}//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+using System.Net;
+using System.Runtime.Serialization;
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// Represents client error with detailed error message and error code
+    /// </summary>
+    [DataContract]
+    public class ClientError
+    {
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ClientError" /> class
+        /// </summary>
+        public ClientError()
+        {
+        }
+
+        #endregion Constructors
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the detailed error message and error code
+        /// </summary>
+        [DataMember(Name = "error")]
+        public ClientExceptionMessage Error
+        {
+            get;
+            set;
+        }
+
+        #endregion Properties
+    }
+
+    /// <summary>
+    /// Represents detailed error message and error code
+    /// </summary>
+    [DataContract]
+    public class ClientExceptionMessage
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the detailed error code
+        /// </summary>
+        [DataMember(Name = "code")]
+        public string ErrorCode
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the detailed error message
+        /// </summary>
+        [DataMember(Name = "message")]
+        public string Message
+        {
+            get;
+            set;
+        }
+
+        #endregion Properties
+    }
+
+    /// <summary>
+    /// Represents client error with detailed error message and error code
+    /// </summary>
+    [DataContract]
+    public class ServiceError
+    {
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceError" /> class
+        /// </summary>
+        public ServiceError()
+        {
+        }
+
+        #endregion Constructors
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the detailed error message and error code
+        /// </summary>
+        [DataMember(Name = "statusCode")]
+        public string ErrorCode
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the detailed error message and error code
+        /// </summary>
+        [DataMember(Name = "message")]
+        public string Message
+        {
+            get;
+            set;
+        }
+
+        #endregion Properties
+    }
+}﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The class for person creation result.
+    /// </summary>
+    public class CreatePersonResult
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the person identifier.
+        /// </summary>
+        /// <value>
+        /// The person identifier.
+        /// </value>
+        public Guid PersonId
+        {
+            get;
+            set;
+        }
+
+        #endregion Properties
+    }
+}﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The detected face entity.
+    /// </summary>
+    public class Face
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the face identifier.
+        /// </summary>
+        /// <value>
+        /// The face identifier.
+        /// </value>
+        public Guid FaceId
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the face rectangle.
+        /// </summary>
+        /// <value>
+        /// The face rectangle.
+        /// </value>
+        public FaceRectangle FaceRectangle
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the face landmarks.
+        /// </summary>
+        /// <value>
+        /// The face landmarks.
+        /// </value>
+        public FaceLandmarks FaceLandmarks
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the face attributes.
+        /// </summary>
+        /// <value>
+        /// The face attributes.
+        /// </value>
+        public FaceAttributes FaceAttributes
+        {
+            get;
+            set;
+        }
+
+        #endregion Properties
+    }
+}﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The face attributes class that holds Age/Gender/Head Pose/Smile/Facial Hair information.
+    /// </summary>
+    public class FaceAttributes
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the age value.
+        /// </summary>
+        /// <value>
+        /// The age value.
+        /// </value>
+        public double Age
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the gender.
+        /// </summary>
+        /// <value>
+        /// The gender.
+        /// </value>
+        public string Gender
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the head pose.
+        /// </summary>
+        /// <value>
+        /// The head pose.
+        /// </value>
+        public HeadPose HeadPose
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the smile value. Represents the confidence of face is smiling.
+        /// </summary>
+        /// <value>
+        /// The smile value.
+        /// </value>
+        public double Smile
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the facial hair.
+        /// </summary>
+        /// <value>
+        /// The facial hair.
+        /// </value>
+        public FacialHair FacialHair
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the glasses type.
+        /// </summary>
+        /// <value>
+        /// The glasses type.
+        /// </value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Glasses Glasses
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}
+﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The face landmarks class.
+    /// </summary>
+    public class FaceLandmarks
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the pupil left.
+        /// </summary>
+        /// <value>
+        /// The pupil left.
+        /// </value>
+        public FeatureCoordinate PupilLeft
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the pupil right.
+        /// </summary>
+        /// <value>
+        /// The pupil right.
+        /// </value>
+        public FeatureCoordinate PupilRight
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the nose tip.
+        /// </summary>
+        /// <value>
+        /// The nose tip.
+        /// </value>
+        public FeatureCoordinate NoseTip
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the mouth left.
+        /// </summary>
+        /// <value>
+        /// The mouth left.
+        /// </value>
+        public FeatureCoordinate MouthLeft
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the mouth right.
+        /// </summary>
+        /// <value>
+        /// The mouth right.
+        /// </value>
+        public FeatureCoordinate MouthRight
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the eyebrow left outer.
+        /// </summary>
+        /// <value>
+        /// The eyebrow left outer.
+        /// </value>
+        public FeatureCoordinate EyebrowLeftOuter
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the eyebrow left inner.
+        /// </summary>
+        /// <value>
+        /// The eyebrow left inner.
+        /// </value>
+        public FeatureCoordinate EyebrowLeftInner
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the eye left outer.
+        /// </summary>
+        /// <value>
+        /// The eye left outer.
+        /// </value>
+        public FeatureCoordinate EyeLeftOuter
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the eye left top.
+        /// </summary>
+        /// <value>
+        /// The eye left top.
+        /// </value>
+        public FeatureCoordinate EyeLeftTop
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the eye left bottom.
+        /// </summary>
+        /// <value>
+        /// The eye left bottom.
+        /// </value>
+        public FeatureCoordinate EyeLeftBottom
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the eye left inner.
+        /// </summary>
+        /// <value>
+        /// The eye left inner.
+        /// </value>
+        public FeatureCoordinate EyeLeftInner
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the eyebrow right inner.
+        /// </summary>
+        /// <value>
+        /// The eyebrow right inner.
+        /// </value>
+        public FeatureCoordinate EyebrowRightInner
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the eyebrow right outer.
+        /// </summary>
+        /// <value>
+        /// The eyebrow right outer.
+        /// </value>
+        public FeatureCoordinate EyebrowRightOuter
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the eye right inner.
+        /// </summary>
+        /// <value>
+        /// The eye right inner.
+        /// </value>
+        public FeatureCoordinate EyeRightInner
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the eye right top.
+        /// </summary>
+        /// <value>
+        /// The eye right top.
+        /// </value>
+        public FeatureCoordinate EyeRightTop
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the eye right bottom.
+        /// </summary>
+        /// <value>
+        /// The eye right bottom.
+        /// </value>
+        public FeatureCoordinate EyeRightBottom
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the eye right outer.
+        /// </summary>
+        /// <value>
+        /// The eye right outer.
+        /// </value>
+        public FeatureCoordinate EyeRightOuter
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the nose root left.
+        /// </summary>
+        /// <value>
+        /// The nose root left.
+        /// </value>
+        public FeatureCoordinate NoseRootLeft
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the nose root right.
+        /// </summary>
+        /// <value>
+        /// The nose root right.
+        /// </value>
+        public FeatureCoordinate NoseRootRight
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the nose left alar top.
+        /// </summary>
+        /// <value>
+        /// The nose left alar top.
+        /// </value>
+        public FeatureCoordinate NoseLeftAlarTop
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the nose right alar top.
+        /// </summary>
+        /// <value>
+        /// The nose right alar top.
+        /// </value>
+        public FeatureCoordinate NoseRightAlarTop
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the nose left alar out tip.
+        /// </summary>
+        /// <value>
+        /// The nose left alar out tip.
+        /// </value>
+        public FeatureCoordinate NoseLeftAlarOutTip
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the nose right alar out tip.
+        /// </summary>
+        /// <value>
+        /// The nose right alar out tip.
+        /// </value>
+        public FeatureCoordinate NoseRightAlarOutTip
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the upper lip top.
+        /// </summary>
+        /// <value>
+        /// The upper lip top.
+        /// </value>
+        public FeatureCoordinate UpperLipTop
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the upper lip bottom.
+        /// </summary>
+        /// <value>
+        /// The upper lip bottom.
+        /// </value>
+        public FeatureCoordinate UpperLipBottom
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the under lip top.
+        /// </summary>
+        /// <value>
+        /// The under lip top.
+        /// </value>
+        public FeatureCoordinate UnderLipTop
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the under lip bottom.
+        /// </summary>
+        /// <value>
+        /// The under lip bottom.
+        /// </value>
+        public FeatureCoordinate UnderLipBottom
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The face list class
+    /// </summary>
+    public class FaceList : FaceListMetadata
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the persisted faces.
+        /// </summary>
+        /// <value>
+        /// The persisted faces.
+        /// </value>
+        public PersonFace[] PersistedFaces
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}
+﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The face list metadata class.
+    /// </summary>
+    public class FaceListMetadata
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the face list identifier.
+        /// </summary>
+        /// <value>
+        /// The face list identifier.
+        /// </value>
+        public string FaceListId
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>
+        /// The name.
+        /// </value>
+        public string Name
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the user data.
+        /// </summary>
+        /// <value>
+        /// The user data.
+        /// </value>
+        public string UserData
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}
+﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// Face metadata class.
+    /// </summary>
+    public class FaceMetadata
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the face identifier.
+        /// </summary>
+        /// <value>
+        /// The face identifier.
+        /// </value>
+        public Guid FaceId
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the user data.
+        /// </summary>
+        /// <value>
+        /// The user data.
+        /// </value>
+        public string UserData
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The face rectangle entity.
+    /// </summary>
+    public class FaceRectangle
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the width.
+        /// </summary>
+        /// <value>
+        /// The width.
+        /// </value>
+        public int Width
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the height.
+        /// </summary>
+        /// <value>
+        /// The height.
+        /// </value>
+        public int Height
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the left.
+        /// </summary>
+        /// <value>
+        /// The left of the face rectangle.
+        /// </value>
+        public int Left
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the top.
+        /// </summary>
+        /// <value>
+        /// The top of the face rectangle.
+        /// </value>
+        public int Top
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}
+﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// Represents length of moustache, beard and sideburn
+    /// </summary>
+    public class FacialHair
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the moustache value. Represents the length of moustache.
+        /// </summary>
+        /// <value>
+        /// The moustache value.
+        /// </value>
+        public double Moustache
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the beard value. Represents the length of beard.
+        /// </summary>
+        /// <value>
+        /// The beard value.
+        /// </value>
+        public double Beard
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the sideburns value. Represents the length of sideburns.
+        /// </summary>
+        /// <value>
+        /// The sideburns value.
+        /// </value>
+        public double Sideburns
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}
+﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The class for feature coordinate.
+    /// </summary>
+    public class FeatureCoordinate
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the x in pixel.
+        /// </summary>
+        /// <value>
+        /// The x of the feature coordinate.
+        /// </value>
+        public double X
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the y in pixel.
+        /// </summary>
+        /// <value>
+        /// The y of the feature coordinate.
+        /// </value>
+        public double Y
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}
+﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows/
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// Enumeration which represents the type of wearing glasses
+    /// </summary>
+    public enum Glasses
+    {
+        /// <summary>
+        /// Indicates not wearing any glasses
+        /// </summary>
+        NoGlasses,
+
+        /// <summary>
+        /// Indicates wearing sunglasses
+        /// </summary>
+        Sunglasses,
+
+        /// <summary>
+        /// Indicates wearing reading glasses
+        /// </summary>
+        ReadingGlasses,
+
+        /// <summary>
+        /// Indicates wearing swimming goggles
+        /// </summary>
+        SwimmingGoggles
+    }
+}
+﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+using System.Collections.Generic;
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The class for group result.
+    /// </summary>
+    public class GroupResult
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the groups. The groups are ranked by number of faces.
+        /// </summary>
+        /// <value>
+        /// The groups.
+        /// </value>
+        public List<Guid[]> Groups
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the messy group. Messy group contains all the faces which cannot find any similar faces from original faces.
+        /// </summary>
+        /// <value>
+        /// The messy group.
+        /// </value>
+        public Guid[] MessyGroup
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}
+﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The head pose entity.
+    /// </summary>
+    public class HeadPose
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the roll.
+        /// </summary>
+        /// <value>
+        /// The roll of the face pose.
+        /// </value>
+        public double Roll
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the yaw.
+        /// </summary>
+        /// <value>
+        /// The yaw of the face pose.
+        /// </value>
+        public double Yaw
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the pitch.
+        /// </summary>
+        /// <value>
+        /// The pitch of the face pose.
+        /// </value>
+        public double Pitch
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}
+﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The identification result.
+    /// </summary>
+    public class IdentifyResult
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the face identifier.
+        /// </summary>
+        /// <value>
+        /// The face identifier.
+        /// </value>
+        public Guid FaceId
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the candidates.
+        /// </summary>
+        /// <value>
+        /// The candidates.
+        /// </value>
+        public Candidate[] Candidates
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The person entity.
+    /// </summary>
+    public class Person
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the person identifier.
+        /// </summary>
+        /// <value>
+        /// The person identifier.
+        /// </value>
+        public Guid PersonId
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the persisted face ids.
+        /// </summary>
+        /// <value>
+        /// The persisted face ids.
+        /// </value>
+        public Guid[] PersistedFaceIds
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>
+        /// The name of the person.
+        /// </value>
+        public string Name
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the profile.
+        /// </summary>
+        /// <value>
+        /// The profile.
+        /// </value>
+        public string UserData
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The person face entity.
+    /// </summary>
+    public class PersonFace
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the persisted face identifier.
+        /// </summary>
+        /// <value>
+        /// The persisted face identifier.
+        /// </value>
+        public Guid PersistedFaceId
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the user data.
+        /// </summary>
+        /// <value>
+        /// The user data.
+        /// </value>
+        public string UserData
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The person group entity.
+    /// </summary>
+    public class PersonGroup
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the person group identifier.
+        /// </summary>
+        /// <value>
+        /// The person group identifier.
+        /// </value>
+        public string PersonGroupId
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>
+        /// The name of the person group.
+        /// </value>
+        public string Name
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the user data.
+        /// </summary>
+        /// <value>
+        /// The user data.
+        /// </value>
+        public string UserData
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}
+﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The class for similar face.
+    /// </summary>
+    public class SimilarFace
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the face identifier.
+        /// </summary>
+        /// <value>
+        /// The face identifier.
+        /// </value>
+        public Guid FaceId
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the confidence.
+        /// </summary>
+        /// <value>
+        /// The confidence.
+        /// </value>
+        public double Confidence
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The class for similar persisted face.
+    /// </summary>
+    public class SimilarPersistedFace
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the persisted face identifier.
+        /// </summary>
+        /// <value>
+        /// The persisted face identifier.
+        /// </value>
+        public Guid PersistedFaceId
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the confidence value.
+        /// </summary>
+        /// <value>
+        /// The confidence value.
+        /// </value>
+        public double Confidence
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    #region Enumerations
+
+    /// <summary>
+    /// Enumeration represents status of training
+    /// </summary>
+    public enum Status
+    {
+        /// <summary>
+        /// Training succeeded
+        /// </summary>
+        Succeeded,
+
+        /// <summary>
+        /// Training failed
+        /// </summary>
+        Failed,
+
+        /// <summary>
+        /// Training still in progress
+        /// </summary>
+        Running
+    }
+
+    #endregion Enumerations
+
+    /// <summary>
+    /// The training status entity.
+    /// </summary>
+    public class TrainingStatus
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the status.
+        /// </summary>
+        /// <value>
+        /// The status.
+        /// </value>
+        public Status Status
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the create time.
+        /// </summary>
+        /// <value>
+        /// The create time.
+        /// </value>
+        public DateTime CreatedDateTime
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the last action time.
+        /// </summary>
+        /// <value>
+        /// The last action time.
+        /// </value>
+        public DateTime LastActionDateTime
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the message.
+        /// </summary>
+        /// <value>
+        /// The message.
+        /// </value>
+        public string Message
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+namespace Microsoft.ProjectOxford.Face.Contract
+{
+    /// <summary>
+    /// The verify result entity.
+    /// </summary>
+    public class VerifyResult
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is same.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is same; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsIdentical
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the confidence.
+        /// </summary>
+        /// <value>
+        /// The confidence.
+        /// </value>
+        public double Confidence
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}
+﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+using System.Net;
+
+namespace Microsoft.ProjectOxford.Face
+{
+    /// <summary>
+    /// Represents client error with detailed error message and error code
+    /// </summary>
+    public class FaceAPIException : Exception
+    {
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FaceAPIException" /> class
+        /// </summary>
+        public FaceAPIException()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FaceAPIException" /> class
+        /// </summary>
+        /// <param name="errorCode">Code represents the error category</param>
+        /// <param name="errorMessage">Message represents the detailed error description</param>
+        /// <param name="statusCode">Http status code</param>
+        public FaceAPIException(string errorCode, string errorMessage, HttpStatusCode statusCode)
+        {
+            ErrorCode = errorCode;
+            ErrorMessage = errorMessage;
+            HttpStatus = statusCode;
+        }
+
+        #endregion Constructors
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the error code
+        /// </summary>
+        public string ErrorCode
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets the error message
+        /// </summary>
+        public string ErrorMessage
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Gets or sets http status of http response.
+        /// </summary>
+        /// <value>
+        /// The HTTP status.
+        /// </value>
+        public HttpStatusCode HttpStatus
+        {
+            get; set;
+        }
+
+        #endregion Properties
+    }
+}﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+
+using Microsoft.ProjectOxford.Face.Contract;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+
+namespace Microsoft.ProjectOxford.Face
+{
+    /// <summary>
+    /// The face service client proxy implementation.
+    /// </summary>
+    public class FaceServiceClient : IDisposable, IFaceServiceClient
+    {
+        #region Fields
+
+        /// <summary>
+        /// The default service host.
+        /// </summary>
+        private const string DEFAULT_API_ROOT = "https://api.projectoxford.ai/face/v1.0";
+
+        /// <summary>
+        /// The JSON content type header.
+        /// </summary>
+        private const string JsonContentTypeHeader = "application/json";
+
+        /// <summary>
+        /// The stream content type header.
+        /// </summary>
+        private const string StreamContentTypeHeader = "application/octet-stream";
+
+        /// <summary>
+        /// The subscription key name.
+        /// </summary>
+        private const string SubscriptionKeyName = "ocp-apim-subscription-key";
+
+        /// <summary>
+        /// The detect.
+        /// </summary>
+        private const string DetectQuery = "detect";
+
+        /// <summary>
+        /// The verify.
+        /// </summary>
+        private const string VerifyQuery = "verify";
+
+        /// <summary>
+        /// The train query.
+        /// </summary>
+        private const string TrainQuery = "train";
+
+        /// <summary>
+        /// The training query.
+        /// </summary>
+        private const string TrainingQuery = "training";
+
+        /// <summary>
+        /// The person groups.
+        /// </summary>
+        private const string PersonGroupsQuery = "persongroups";
+
+        /// <summary>
+        /// The persons.
+        /// </summary>
+        private const string PersonsQuery = "persons";
+
+        /// <summary>
+        /// The faces query string.
+        /// </summary>
+        private const string FacesQuery = "faces";
+
+        /// <summary>
+        /// The persisted faces query string.
+        /// </summary>
+        private const string PersistedFacesQuery = "persistedfaces";
+
+        /// <summary>
+        /// The face list query
+        /// </summary>
+        private const string FaceListsQuery = "facelists";
+
+        /// <summary>
+        /// The endpoint for Find Similar API.
+        /// </summary>
+        private const string FindSimilarsQuery = "findsimilars";
+
+        /// <summary>
+        /// The identify.
+        /// </summary>
+        private const string IdentifyQuery = "identify";
+
+        /// <summary>
+        /// The group.
+        /// </summary>
+        private const string GroupQuery = "group";
+
+        /// <summary>
+        /// The settings
+        /// </summary>
+        private static JsonSerializerSettings s_settings = new JsonSerializerSettings()
+        {
+            DateFormatHandling = DateFormatHandling.IsoDateFormat,
+            NullValueHandling = NullValueHandling.Ignore,
+            ContractResolver = new CamelCasePropertyNamesContractResolver()
+        };
+
+        /// <summary>
+        /// The subscription key.
+        /// </summary>
+        private readonly string _subscriptionKey;
+
+        /// <summary>
+        /// The root URI for the service endpoint.
+        /// </summary>
+        private readonly string _apiRoot;
+
+        /// <summary>
+        /// The HTTP client
+        /// </summary>
+        private HttpClient _httpClient;
+
+        #endregion Fields
+
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FaceServiceClient"/> class.
+        /// </summary>
+        /// <param name="subscriptionKey">The subscription key.</param>
+        public FaceServiceClient(string subscriptionKey) : this(subscriptionKey, DEFAULT_API_ROOT) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FaceServiceClient"/> class.
+        /// </summary>
+        /// <param name="subscriptionKey">The subscription key.</param>
+        /// <param name="apiRoot">Root URI for the service endpoint.</param>
+        public FaceServiceClient(string subscriptionKey, string apiRoot)
+        {
+            _subscriptionKey = subscriptionKey;
+            _apiRoot = apiRoot?.TrimEnd('/');
+            _httpClient = new HttpClient();
+            _httpClient.DefaultRequestHeaders.Add(SubscriptionKeyName, subscriptionKey);
+        }
+
+        /// <summary>
+        /// Finalizes an instance of the <see cref="FaceServiceClient"/> class.
+        /// </summary>
+        ~FaceServiceClient()
+        {
+            Dispose(false);
+        }
+
+        #endregion Constructors
+
+        #region Properties
+
+        /// <summary>
+        /// Gets service endpoint address, overridable by subclasses, default to free subscription's endpoint.
+        /// </summary>
+        protected virtual string ServiceHost => _apiRoot;
+
+        /// <summary>
+        /// Gets default request headers for all following http request
+        /// </summary>
+        public HttpRequestHeaders DefaultRequestHeaders
+        {
+            get
+            {
+                return _httpClient.DefaultRequestHeaders;
+            }
+        }
+
+        #endregion Properties
+
+        #region Methods
+
+        /// <summary>
+        /// Gets face attribute query string from attribute types
+        /// </summary>
+        /// <param name="types">Face attribute types</param>
+        /// <returns>Face attribute query string</returns>
+        public static string GetAttributeString(IEnumerable<FaceAttributeType> types)
+        {
+            return string.Join(",", types.Select(attr =>
+                {
+                    var attrStr = attr.ToString();
+                    return char.ToLowerInvariant(attrStr[0]) + attrStr.Substring(1);
+                }).ToArray());
+        }
+
+        /// <summary>
+        /// Detects an URL asynchronously.
+        /// </summary>
+        /// <param name="imageUrl">The image URL.</param>
+        /// <param name="returnFaceId">If set to <c>true</c> [return face ID].</param>
+        /// <param name="returnFaceLandmarks">If set to <c>true</c> [return face landmarks].</param>
+        /// <param name="returnFaceAttributes">Face attributes need to be returned.</param> 
+        /// <returns>The detected faces.</returns>
+        public async Task<Microsoft.ProjectOxford.Face.Contract.Face[]> DetectAsync(string imageUrl, bool returnFaceId = true, bool returnFaceLandmarks = false, IEnumerable<FaceAttributeType> returnFaceAttributes = null)
+        {
+            if (returnFaceAttributes != null)
+            {
+                var requestUrl = string.Format(
+                    "{0}/{1}?returnFaceId={2}&returnFaceLandmarks={3}&returnFaceAttributes={4}",
+                    ServiceHost,
+                    DetectQuery,
+                    returnFaceId,
+                    returnFaceLandmarks,
+                    GetAttributeString(returnFaceAttributes));
+
+                return await this.SendRequestAsync<object, Microsoft.ProjectOxford.Face.Contract.Face[]>(HttpMethod.Post, requestUrl, new { url = imageUrl });
+            }
+            else
+            {
+                var requestUrl = string.Format(
+                    "{0}/{1}?returnFaceId={2}&returnFaceLandmarks={3}",
+                    ServiceHost,
+                    DetectQuery,
+                    returnFaceId,
+                    returnFaceLandmarks);
+
+                return await this.SendRequestAsync<object, Microsoft.ProjectOxford.Face.Contract.Face[]>(HttpMethod.Post, requestUrl, new { url = imageUrl });
+            }
+        }
+
+        /// <summary>
+        /// Detects an image asynchronously.
+        /// </summary>
+        /// <param name="imageStream">The image stream.</param>
+        /// <param name="returnFaceId">If set to <c>true</c> [return face ID].</param>
+        /// <param name="returnFaceLandmarks">If set to <c>true</c> [return face landmarks].</param>
+        /// <param name="returnFaceAttributes">Face attributes need to be returned.</param> 
+        /// <returns>The detected faces.</returns>
+        public async Task<Microsoft.ProjectOxford.Face.Contract.Face[]> DetectAsync(Stream imageStream, bool returnFaceId = true, bool returnFaceLandmarks = false, IEnumerable<FaceAttributeType> returnFaceAttributes = null)
+        {
+            if (returnFaceAttributes != null)
+            {
+                var requestUrl = string.Format(
+                    "{0}/{1}?returnFaceId={2}&returnFaceLandmarks={3}&returnFaceAttributes={4}",
+                    ServiceHost,
+                    DetectQuery,
+                    returnFaceId,
+                    returnFaceLandmarks,
+                    GetAttributeString(returnFaceAttributes));
+
+                return await this.SendRequestAsync<Stream, Microsoft.ProjectOxford.Face.Contract.Face[]>(HttpMethod.Post, requestUrl, imageStream);
+            }
+            else
+            {
+                var requestUrl = string.Format(
+                    "{0}/{1}?returnFaceId={2}&returnFaceLandmarks={3}",
+                    ServiceHost,
+                    DetectQuery,
+                    returnFaceId,
+                    returnFaceLandmarks);
+
+                return await this.SendRequestAsync<Stream, Microsoft.ProjectOxford.Face.Contract.Face[]>(HttpMethod.Post, requestUrl, imageStream);
+            }
+        }
+
+        /// <summary>
+        /// Verifies whether the specified two faces belong to the same person asynchronously.
+        /// </summary>
+        /// <param name="faceId1">The face id 1.</param>
+        /// <param name="faceId2">The face id 2.</param>
+        /// <returns>The verification result.</returns>
+        public async Task<VerifyResult> VerifyAsync(Guid faceId1, Guid faceId2)
+        {
+            var requestUrl = string.Format("{0}/{1}", ServiceHost, VerifyQuery);
+
+            return await this.SendRequestAsync<object, VerifyResult>(
+                HttpMethod.Post,
+                requestUrl,
+                new
+                {
+                    faceId1 = faceId1,
+                    faceId2 = faceId2
+                });
+        }
+
+        /// <summary>
+        /// Verifies whether the specified face belong to the specified person asynchronously.
+        /// </summary>
+        /// <param name="faceId">the face ID</param>
+        /// <param name="personGroupId">the person group ID</param>
+        /// <param name="personId">the person ID</param>
+        /// <returns>The verification result.</returns>
+        public async Task<VerifyResult> VerifyAsync(Guid faceId, string personGroupId, Guid personId)
+        {
+            var requestUrl = string.Format("{0}/{1}", ServiceHost, VerifyQuery);
+
+            return await this.SendRequestAsync<object, VerifyResult>(
+                HttpMethod.Post,
+                requestUrl,
+                new
+                {
+                    faceId = faceId,
+                    personGroupId = personGroupId,
+                    personId = personId
+                });
+        }
+
+        /// <summary>
+        /// Identities the faces in a given person group asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="faceIds">The face ids.</param>
+        /// <param name="maxNumOfCandidatesReturned">The maximum number of candidates returned for each face.</param>
+        /// <returns>The identification results</returns>
+        public async Task<IdentifyResult[]> IdentifyAsync(string personGroupId, Guid[] faceIds, int maxNumOfCandidatesReturned = 1)
+        {
+            return await IdentifyAsync(personGroupId, faceIds, 0.5f, maxNumOfCandidatesReturned);
+        }
+
+        /// <summary>
+        /// Identities the faces in a given person group asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="faceIds">The face ids.</param>
+        /// <param name="confidenceThreshold">user-specified confidence threshold.</param>
+        /// <param name="maxNumOfCandidatesReturned">The maximum number of candidates returned for each face.</param>
+        /// <returns>The identification results</returns>
+        public async Task<IdentifyResult[]> IdentifyAsync(string personGroupId, Guid[] faceIds, float confidenceThreshold, int maxNumOfCandidatesReturned = 1)
+        {
+            var requestUrl = string.Format("{0}/{1}", ServiceHost, IdentifyQuery);
+
+            return await this.SendRequestAsync<object, IdentifyResult[]>(
+                HttpMethod.Post,
+                requestUrl,
+                new
+                {
+                    personGroupId = personGroupId,
+                    faceIds = faceIds,
+                    maxNumOfCandidatesReturned = maxNumOfCandidatesReturned,
+                    confidenceThreshold = confidenceThreshold
+                });
+        }
+
+        /// <summary>
+        /// Creates the person group asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group identifier.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>Task object.</returns>
+        public async Task CreatePersonGroupAsync(string personGroupId, string name, string userData = null)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}", ServiceHost, PersonGroupsQuery, personGroupId);
+
+            await this.SendRequestAsync<object, object>(
+                HttpMethod.Put,
+                requestUrl,
+                new
+                {
+                    name = name,
+                    userData = userData
+                });
+        }
+
+        /// <summary>
+        /// Gets a person group asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <returns>The person group entity.</returns>
+        public async Task<PersonGroup> GetPersonGroupAsync(string personGroupId)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}", ServiceHost, PersonGroupsQuery, personGroupId);
+
+            return await this.SendRequestAsync<object, PersonGroup>(HttpMethod.Get, requestUrl, null);
+        }
+
+        /// <summary>
+        /// Updates a person group asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>Task object.</returns>
+        public async Task UpdatePersonGroupAsync(string personGroupId, string name, string userData = null)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}", ServiceHost, PersonGroupsQuery, personGroupId);
+
+            await this.SendRequestAsync<object, object>(
+                new HttpMethod("PATCH"),
+                requestUrl,
+                new
+                {
+                    name = name,
+                    userData = userData
+                });
+        }
+
+        /// <summary>
+        /// Deletes a person group asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <returns>Task object.</returns>
+        public async Task DeletePersonGroupAsync(string personGroupId)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}", ServiceHost, PersonGroupsQuery, personGroupId);
+
+            await this.SendRequestAsync<object, object>(HttpMethod.Delete, requestUrl, null);
+        }
+
+        /// <summary>
+        /// Gets all person groups asynchronously.
+        /// </summary>
+        /// <returns>Person group entity array.</returns>
+        [Obsolete("use ListPersonGroupsAsync instead")]
+        public async Task<PersonGroup[]> GetPersonGroupsAsync()
+        {
+            return await ListPersonGroupsAsync();
+        }
+
+        /// <summary>
+        /// Asynchronously list the top person groups whose Id is larger than "start".
+        /// </summary>
+        /// <param name="start">person group Id bar. List the person groups whose Id is larger than "start".</param>
+        /// <param name="top">the number of person groups to list.</param>
+        /// <returns>Person group entity array.</returns>
+        public async Task<PersonGroup[]> ListPersonGroupsAsync(string start = "", int top = 1000)
+        {
+            var requestUrl = string.Format(
+                "{0}/{1}?start={2}$top={3}",
+                ServiceHost,
+                PersonGroupsQuery,
+                start,
+                top.ToString(CultureInfo.InvariantCulture));
+
+            return await this.SendRequestAsync<object, PersonGroup[]>(HttpMethod.Get, requestUrl, null);
+        }
+
+        /// <summary>
+        /// Trains the person group asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <returns>Task object.</returns>
+        public async Task TrainPersonGroupAsync(string personGroupId)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}/{3}", ServiceHost, PersonGroupsQuery, personGroupId, TrainQuery);
+
+            await this.SendRequestAsync<object, object>(HttpMethod.Post, requestUrl, null);
+        }
+
+        /// <summary>
+        /// Gets person group training status asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <returns>The person group training status.</returns>
+        public async Task<TrainingStatus> GetPersonGroupTrainingStatusAsync(string personGroupId)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}/{3}", ServiceHost, PersonGroupsQuery, personGroupId, TrainingQuery);
+
+            return await this.SendRequestAsync<object, TrainingStatus>(HttpMethod.Get, requestUrl, null);
+        }
+
+        /// <summary>
+        /// Creates a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>       
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>The CreatePersonResult entity.</returns>
+        public async Task<CreatePersonResult> CreatePersonAsync(string personGroupId, string name, string userData = null)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}/{3}", ServiceHost, PersonGroupsQuery, personGroupId, PersonsQuery);
+
+            return await this.SendRequestAsync<object, CreatePersonResult>(
+                HttpMethod.Post,
+                requestUrl,
+                new
+                {
+                    name = name,
+                    userData = userData
+                });
+        }
+
+        /// <summary>
+        /// Gets a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <returns>The person entity.</returns>
+        public async Task<Person> GetPersonAsync(string personGroupId, Guid personId)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}/{3}/{4}", ServiceHost, PersonGroupsQuery, personGroupId, PersonsQuery, personId);
+
+            return await this.SendRequestAsync<object, Person>(HttpMethod.Get, requestUrl, null);
+        }
+
+        /// <summary>
+        /// Updates a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="personId">The person id.</param>    
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>Task object.</returns>
+        public async Task UpdatePersonAsync(string personGroupId, Guid personId, string name, string userData = null)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}/{3}/{4}", ServiceHost, PersonGroupsQuery, personGroupId, PersonsQuery, personId);
+
+            await this.SendRequestAsync<object, object>(
+                new HttpMethod("PATCH"),
+                requestUrl,
+                new
+                {
+                    name = name,
+                    userData = userData
+                });
+        }
+
+        /// <summary>
+        /// Deletes a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <returns>Task object.</returns>
+        public async Task DeletePersonAsync(string personGroupId, Guid personId)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}/{3}/{4}", ServiceHost, PersonGroupsQuery, personGroupId, PersonsQuery, personId);
+
+            await this.SendRequestAsync<object, object>(HttpMethod.Delete, requestUrl, null);
+        }
+
+        /// <summary>
+        /// Gets all persons inside a person group asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <returns>
+        /// The person entity array.
+        /// </returns>
+        public async Task<Person[]> GetPersonsAsync(string personGroupId)
+        {
+            var requestUrl = string.Format(
+                "{0}/{1}/{2}/{3}",
+                ServiceHost,
+                PersonGroupsQuery,
+                personGroupId,
+                PersonsQuery);
+
+            return await this.SendRequestAsync<object, Person[]>(HttpMethod.Get, requestUrl, null);
+        }
+
+        /// <summary>
+        /// Adds a face to a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <param name="imageUrl">The face image URL.</param>    
+        /// <param name="userData">The user data.</param>
+        /// <param name="targetFace">The target face.</param>
+        /// <returns>
+        /// Add person face result.
+        /// </returns>
+        public async Task<AddPersistedFaceResult> AddPersonFaceAsync(string personGroupId, Guid personId, string imageUrl, string userData = null, FaceRectangle targetFace = null)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}/{3}/{4}/{5}?userData={6}&targetFace={7}", 
+                ServiceHost, PersonGroupsQuery, personGroupId, PersonsQuery, personId, PersistedFacesQuery, userData, 
+                targetFace == null ? string.Empty : string.Format("{0},{1},{2},{3}", targetFace.Left, targetFace.Top, targetFace.Width, targetFace.Height));
+
+            return await this.SendRequestAsync<object, AddPersistedFaceResult>(HttpMethod.Post, requestUrl, new { url = imageUrl });
+        }
+
+        /// <summary>
+        /// Adds a face to a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <param name="imageStream">The face image stream.</param>    
+        /// <param name="userData">The user data.</param>   
+        /// <param name="targetFace">The target face.</param>
+        /// <returns>
+        /// Add person face result.
+        /// </returns>
+        public async Task<AddPersistedFaceResult> AddPersonFaceAsync(string personGroupId, Guid personId, Stream imageStream, string userData = null, FaceRectangle targetFace = null)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}/{3}/{4}/{5}?userData={6}&targetFace={7}", 
+                ServiceHost, PersonGroupsQuery, personGroupId, PersonsQuery, personId, PersistedFacesQuery, userData, 
+                targetFace == null ? string.Empty : string.Format("{0},{1},{2},{3}", targetFace.Left, targetFace.Top, targetFace.Width, targetFace.Height));
+
+            return await this.SendRequestAsync<Stream, AddPersistedFaceResult>(HttpMethod.Post, requestUrl, imageStream);
+        }
+
+        /// <summary>
+        /// Gets a face of a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <param name="persistedFace">The persisted face id.</param>
+        /// <returns>
+        /// The person face entity.
+        /// </returns>
+        public async Task<PersonFace> GetPersonFaceAsync(string personGroupId, Guid personId, Guid persistedFace)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}/{3}/{4}/{5}/{6}", ServiceHost, PersonGroupsQuery, personGroupId, PersonsQuery, personId, PersistedFacesQuery, persistedFace);
+
+            return await this.SendRequestAsync<object, PersonFace>(HttpMethod.Get, requestUrl, null);
+        }
+
+        /// <summary>
+        /// Updates a face of a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <param name="persistedFaceId">The persisted face id.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>
+        /// Task object.
+        /// </returns>
+        public async Task UpdatePersonFaceAsync(string personGroupId, Guid personId, Guid persistedFaceId, string userData)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}/{3}/{4}/{5}/{6}", ServiceHost, PersonGroupsQuery, personGroupId, PersonsQuery, personId, PersistedFacesQuery, persistedFaceId);
+
+            await this.SendRequestAsync<object, object>(new HttpMethod("PATCH"), requestUrl, new { userData = userData });
+        }
+
+        /// <summary>
+        /// Deletes a face of a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <param name="persistedFaceId">The persisted face id.</param>
+        /// <returns>
+        /// Task object.
+        /// </returns>
+        public async Task DeletePersonFaceAsync(string personGroupId, Guid personId, Guid persistedFaceId)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}/{3}/{4}/{5}/{6}", ServiceHost, PersonGroupsQuery, personGroupId, PersonsQuery, personId, PersistedFacesQuery, persistedFaceId);
+
+            await this.SendRequestAsync<object, object>(HttpMethod.Delete, requestUrl, null);
+        }
+
+        /// <summary>
+        /// Finds the similar faces asynchronously.
+        /// </summary>
+        /// <param name="faceId">The face identifier.</param>
+        /// <param name="faceIds">The face identifiers.</param>
+        /// <param name="maxNumOfCandidatesReturned">The max number of candidates returned.</param>
+        /// <returns>
+        /// The similar faces.
+        /// </returns>
+        public async Task<SimilarFace[]> FindSimilarAsync(Guid faceId, Guid[] faceIds, int maxNumOfCandidatesReturned = 20)
+        {
+            return await FindSimilarAsync(faceId, faceIds, FindSimilarMatchMode.matchPerson, maxNumOfCandidatesReturned);
+        }
+
+        /// <summary>
+        /// Finds the similar faces asynchronously.
+        /// </summary>
+        /// <param name="faceId">The face identifier.</param>
+        /// <param name="faceIds">The face identifiers.</param>
+        /// <param name="mode">Algorithm mode option, default as "matchPerson".</param>
+        /// <param name="maxNumOfCandidatesReturned">The max number of candidates returned.</param>
+        /// <returns>
+        /// The similar faces.
+        /// </returns>
+        public async Task<SimilarFace[]> FindSimilarAsync(Guid faceId, Guid[] faceIds, FindSimilarMatchMode mode, int maxNumOfCandidatesReturned = 20)
+        {
+            var requestUrl = string.Format("{0}/{1}", ServiceHost, FindSimilarsQuery);
+
+            return await this.SendRequestAsync<object, SimilarFace[]>(
+                HttpMethod.Post,
+                requestUrl,
+                new
+                {
+                    faceId = faceId,
+                    faceIds = faceIds,
+                    maxNumOfCandidatesReturned = maxNumOfCandidatesReturned,
+                    mode = mode.ToString()
+                });
+        }
+
+        /// <summary>
+        /// Finds the similar faces asynchronously.
+        /// </summary>
+        /// <param name="faceId">The face identifier.</param>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <param name="maxNumOfCandidatesReturned">The max number of candidates returned.</param>
+        /// <returns>
+        /// The similar persisted faces.
+        /// </returns>
+        public async Task<SimilarPersistedFace[]> FindSimilarAsync(Guid faceId, string faceListId, int maxNumOfCandidatesReturned = 20)
+        {
+            return await FindSimilarAsync(faceId, faceListId, FindSimilarMatchMode.matchPerson, maxNumOfCandidatesReturned);
+        }
+
+        /// <summary>
+        /// Finds the similar faces asynchronously.
+        /// </summary>
+        /// <param name="faceId">The face identifier.</param>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <param name="mode">Algorithm mode option, default as "matchPerson".</param>
+        /// <param name="maxNumOfCandidatesReturned">The max number of candidates returned.</param>
+        /// <returns>
+        /// The similar persisted faces.
+        /// </returns>
+        public async Task<SimilarPersistedFace[]> FindSimilarAsync(Guid faceId, string faceListId, FindSimilarMatchMode mode, int maxNumOfCandidatesReturned = 20)
+        {
+            var requestUrl = string.Format("{0}/{1}", ServiceHost, FindSimilarsQuery);
+
+            return await this.SendRequestAsync<object, SimilarPersistedFace[]>(
+                HttpMethod.Post,
+                requestUrl,
+                new
+                {
+                    faceId = faceId,
+                    faceListId = faceListId,
+                    maxNumOfCandidatesReturned = maxNumOfCandidatesReturned,
+                    mode = mode.ToString()
+                });
+        }
+
+        /// <summary>
+        /// Groups the face asynchronously.
+        /// </summary>
+        /// <param name="faceIds">The face ids.</param>
+        /// <returns>
+        /// Task object.
+        /// </returns>
+        public async Task<GroupResult> GroupAsync(Guid[] faceIds)
+        {
+            var requestUrl = string.Format("{0}/{1}", ServiceHost, GroupQuery);
+
+            return await this.SendRequestAsync<object, GroupResult>(
+                HttpMethod.Post,
+                requestUrl,
+                new
+                {
+                    faceIds = faceIds
+                });
+        }
+
+        /// <summary>
+        /// Creates the face list asynchronously.
+        /// </summary>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>   
+        /// <returns>
+        /// Task object.
+        /// </returns>
+        public async Task CreateFaceListAsync(string faceListId, string name, string userData)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}", ServiceHost, FaceListsQuery, faceListId);
+
+            await this.SendRequestAsync<object, object>(
+                HttpMethod.Put,
+                requestUrl,
+                new
+                {
+                    name = name,
+                    userData = userData
+                });
+        }
+
+        /// <summary>
+        /// Gets the face list asynchronously.
+        /// </summary>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <returns>
+        /// Face list object.
+        /// </returns>
+        public async Task<FaceList> GetFaceListAsync(string faceListId)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}", ServiceHost, FaceListsQuery, faceListId);
+
+            return await this.SendRequestAsync<object, FaceList>(HttpMethod.Get, requestUrl, null);
+        }
+
+        /// <summary>
+        /// List the face lists asynchronously.
+        /// </summary>
+        /// <returns>
+        /// FaceListMetadata array.
+        /// </returns>
+        public async Task<FaceListMetadata[]> ListFaceListsAsync()
+        {
+            var requestUrl = string.Format("{0}/{1}", ServiceHost, FaceListsQuery);
+
+            return await this.SendRequestAsync<object, FaceListMetadata[]>(HttpMethod.Get, requestUrl, null);
+        }
+
+        /// <summary>
+        /// Updates the face list asynchronously.
+        /// </summary>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>
+        /// Task object.
+        /// </returns>
+        public async Task UpdateFaceListAsync(string faceListId, string name, string userData)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}", ServiceHost, FaceListsQuery, faceListId);
+
+            await this.SendRequestAsync<object, object>(
+                new HttpMethod("PATCH"),
+                requestUrl,
+                new
+                {
+                    name = name,
+                    userData = userData
+                });
+        }
+
+        /// <summary>
+        /// Deletes the face list asynchronously.
+        /// </summary>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <returns>
+        /// Task object.
+        /// </returns>
+        public async Task DeleteFaceListAsync(string faceListId)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}", ServiceHost, FaceListsQuery, faceListId);
+
+            await this.SendRequestAsync<object, object>(HttpMethod.Delete, requestUrl, null);
+        }
+
+        /// <summary>
+        /// Adds the face to face list asynchronously.
+        /// </summary>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <param name="imageUrl">The face image URL.</param>    
+        /// <param name="userData">The user data.</param>
+        /// <param name="targetFace">The target face.</param>     
+        /// <returns>
+        /// Add face result.
+        /// </returns>
+        public async Task<AddPersistedFaceResult> AddFaceToFaceListAsync(string faceListId, string imageUrl, string userData = null, FaceRectangle targetFace = null)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}/{3}?userData={4}&targetFace={5}", 
+                ServiceHost, FaceListsQuery, faceListId, PersistedFacesQuery, userData,
+                targetFace == null ? string.Empty : string.Format("{0},{1},{2},{3}", targetFace.Left, targetFace.Top, targetFace.Width, targetFace.Height));
+
+            return await this.SendRequestAsync<object, AddPersistedFaceResult>(HttpMethod.Post, requestUrl, new { url = imageUrl });
+        }
+
+        /// <summary>
+        /// Adds the face to face list asynchronously.
+        /// </summary>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <param name="imageStream">The face image stream.</param>   
+        /// <param name="userData">The user data.</param>   
+        /// <param name="targetFace">The target face.</param>     
+        /// <returns>
+        /// Add face result.
+        /// </returns>
+        public async Task<AddPersistedFaceResult> AddFaceToFaceListAsync(string faceListId, Stream imageStream, string userData = null, FaceRectangle targetFace = null)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}/{3}?userData={4}&targetFace={5}", 
+                ServiceHost, FaceListsQuery, faceListId, PersistedFacesQuery, userData, 
+                targetFace == null ? string.Empty : string.Format("{0},{1},{2},{3}", targetFace.Left, targetFace.Top, targetFace.Width, targetFace.Height));
+
+            return await this.SendRequestAsync<object, AddPersistedFaceResult>(HttpMethod.Post, requestUrl, imageStream);
+        }
+
+        /// <summary>
+        /// Deletes the face from face list asynchronously.
+        /// </summary>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <param name="persistedFaceId">The persisted face id.</param>
+        /// <returns>Task object.</returns>
+        public async Task DeleteFaceFromFaceListAsync(string faceListId, Guid persistedFaceId)
+        {
+            var requestUrl = string.Format("{0}/{1}/{2}/{3}/{4}", ServiceHost, FaceListsQuery, faceListId, PersistedFacesQuery, persistedFaceId);
+
+            await this.SendRequestAsync<object, object>(HttpMethod.Delete, requestUrl, null);
+        }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_httpClient != null)
+                {
+                    _httpClient.Dispose();
+                    _httpClient = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sends the request asynchronous.
+        /// </summary>
+        /// <typeparam name="TRequest">The type of the request.</typeparam>
+        /// <typeparam name="TResponse">The type of the response.</typeparam>
+        /// <param name="httpMethod">The HTTP method.</param>
+        /// <param name="requestUrl">The request URL.</param>
+        /// <param name="requestBody">The request body.</param>
+        /// <returns>The response.</returns>
+        /// <exception cref="OxfordAPIException">The client exception.</exception>
+        private async Task<TResponse> SendRequestAsync<TRequest, TResponse>(HttpMethod httpMethod, string requestUrl, TRequest requestBody)
+        {
+            var request = new HttpRequestMessage(httpMethod, ServiceHost);
+            request.RequestUri = new Uri(requestUrl);
+            if (requestBody != null)
+            {
+                if (requestBody is Stream)
+                {
+                    request.Content = new StreamContent(requestBody as Stream);
+                    request.Content.Headers.ContentType = new MediaTypeHeaderValue(StreamContentTypeHeader);
+                }
+                else
+                {
+                    request.Content = new StringContent(JsonConvert.SerializeObject(requestBody, s_settings), Encoding.UTF8, JsonContentTypeHeader);
+                }
+            }
+
+            HttpResponseMessage response = await _httpClient.SendAsync(request);
+            if (response.IsSuccessStatusCode)
+            {
+                string responseContent = null;
+                if (response.Content != null)
+                {
+                    responseContent = await response.Content.ReadAsStringAsync();
+                }
+
+                if (!string.IsNullOrWhiteSpace(responseContent))
+                {
+                    return JsonConvert.DeserializeObject<TResponse>(responseContent, s_settings);
+                }
+
+                return default(TResponse);
+            }
+            else
+            {
+                if (response.Content != null && response.Content.Headers.ContentType.MediaType.Contains(JsonContentTypeHeader))
+                {
+                    var errorObjectString = await response.Content.ReadAsStringAsync();
+                    ClientError ex = JsonConvert.DeserializeObject<ClientError>(errorObjectString);
+                    if (ex.Error != null)
+                    {
+                        throw new FaceAPIException(ex.Error.ErrorCode, ex.Error.Message, response.StatusCode);
+                    }
+                    else
+                    {
+                        ServiceError serviceEx = JsonConvert.DeserializeObject<ServiceError>(errorObjectString);
+                        if (ex != null)
+                        {
+                            throw new FaceAPIException(serviceEx.ErrorCode, serviceEx.Message, response.StatusCode);
+                        }
+                        else
+                        {
+                            throw new FaceAPIException("Unknown", "Unknown Error", response.StatusCode);
+                        }
+                    }
+                }
+
+                response.EnsureSuccessStatusCode();
+            }
+
+            return default(TResponse);
+        }
+
+        #endregion Methods
+    }
+}﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/Cognitive-Face-Windows
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+
+using Microsoft.ProjectOxford.Face.Contract;
+
+namespace Microsoft.ProjectOxford.Face
+{
+    #region Enumerations
+
+    /// <summary>
+    /// Supported face attribute types
+    /// </summary>
+    public enum FaceAttributeType
+    {
+        /// <summary>
+        /// Analyses age
+        /// </summary>
+        Age,
+
+        /// <summary>
+        /// Analyses gender
+        /// </summary>
+        Gender,
+
+        /// <summary>
+        /// Analyses facial hair
+        /// </summary>
+        FacialHair,
+
+        /// <summary>
+        /// Analyses whether is smiling
+        /// </summary>
+        Smile,
+
+        /// <summary>
+        /// Analyses head pose
+        /// </summary>
+        HeadPose,
+
+        /// <summary>
+        /// Analyses glasses type
+        /// </summary>
+        Glasses,
+    }
+
+    /// <summary>
+    /// two working modes of Face - Find Similar
+    /// </summary>
+    public enum FindSimilarMatchMode
+    {
+        /// <summary>
+        /// matchPerson mode of Face - Find Similar, return the similar faces of the same person with the query face.
+        /// </summary>
+        matchPerson,
+
+        /// <summary>
+        /// matchFace mode of Face - Find Similar, return the similar faces of the query face, ignoring if they belong to the same person.
+        /// </summary>
+        matchFace
+    }
+
+    #endregion Enumerations
+
+    /// <summary>
+    /// The face service client proxy interface.
+    /// </summary>
+    public interface IFaceServiceClient
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets default request headers for all following http request
+        /// </summary>
+        HttpRequestHeaders DefaultRequestHeaders
+        {
+            get;
+        }
+
+        #endregion Properties
+
+        #region Methods
+
+        /// <summary>
+        /// Adds the face to face list asynchronously.
+        /// </summary>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <param name="imageUrl">The face image URL.</param>    
+        /// <param name="userData">The user data.</param>
+        /// <param name="targetFace">The target face.</param>     
+        /// <returns>
+        /// Add face result.
+        /// </returns>
+        Task<AddPersistedFaceResult> AddFaceToFaceListAsync(string faceListId, string imageUrl, string userData = null, FaceRectangle targetFace = null);
+
+        /// <summary>
+        /// Adds the face to face list asynchronously.
+        /// </summary>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <param name="imageStream">The face image stream.</param>   
+        /// <param name="userData">The user data.</param>   
+        /// <param name="targetFace">The target face.</param>     
+        /// <returns>
+        /// Add face result.
+        /// </returns>
+        Task<AddPersistedFaceResult> AddFaceToFaceListAsync(string faceListId, Stream imageStream, string userData = null, FaceRectangle targetFace = null);
+
+        /// <summary>
+        /// Adds a face to a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <param name="imageUrl">The face image URL.</param>  
+        /// <param name="userData">The user data.</param>
+        /// <param name="targetFace">The target face.</param>
+        /// <returns>
+        /// Add person face result.
+        /// </returns>
+        Task<AddPersistedFaceResult> AddPersonFaceAsync(string personGroupId, Guid personId, string imageUrl, string userData = null, FaceRectangle targetFace = null);
+
+        /// <summary>
+        /// Adds a face to a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <param name="imageStream">The face image stream.</param>    
+        /// <param name="userData">The user data.</param>   
+        /// <param name="targetFace">The Target Face.</param>
+        /// <returns>
+        /// Add person face result.
+        /// </returns>
+        Task<AddPersistedFaceResult> AddPersonFaceAsync(string personGroupId, Guid personId, Stream imageStream, string userData = null, FaceRectangle targetFace = null);
+
+        /// <summary>
+        /// Creates the face list asynchronously.
+        /// </summary>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>     
+        /// <returns>Task object.</returns>
+        Task CreateFaceListAsync(string faceListId, string name, string userData);
+
+        /// <summary>
+        /// Creates a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>  
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>The CreatePersonResult entity.</returns>
+        Task<CreatePersonResult> CreatePersonAsync(string personGroupId, string name, string userData = null);
+
+        /// <summary>
+        /// Creates the person group asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group identifier.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>Task object.</returns>
+        Task CreatePersonGroupAsync(string personGroupId, string name, string userData = null);
+
+        /// <summary>
+        /// Deletes the face from face list asynchronously.
+        /// </summary>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <param name="persistedFaceId">The persisted face identifier.</param>
+        /// <returns>Task object.</returns>
+        Task DeleteFaceFromFaceListAsync(string faceListId, Guid persistedFaceId);
+
+        /// <summary>
+        /// Deletes the face list asynchronously.
+        /// </summary>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <returns>Task object.</returns>
+        Task DeleteFaceListAsync(string faceListId);
+
+        /// <summary>
+        /// Deletes a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <returns>Task object.</returns>
+        Task DeletePersonAsync(string personGroupId, Guid personId);
+
+        /// <summary>
+        /// Deletes a face of a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <param name="persistedFaceId">The persisted face id.</param>
+        /// <returns>Task object.</returns>
+        Task DeletePersonFaceAsync(string personGroupId, Guid personId, Guid persistedFaceId);
+
+        /// <summary>
+        /// Deletes a person group asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <returns>Task object.</returns>
+        Task DeletePersonGroupAsync(string personGroupId);
+
+        /// <summary>
+        /// Detects an URL asynchronously.
+        /// </summary>
+        /// <param name="imageUrl">The image URL.</param>
+        /// <param name="returnFaceId">If set to <c>true</c> [return face ID].</param>
+        /// <param name="returnFaceLandmarks">If set to <c>true</c> [return face landmarks].</param>
+        /// <param name="returnFaceAttributes">Return face attributes.</param> 
+        /// <returns>The detected faces.</returns>
+        Task<Microsoft.ProjectOxford.Face.Contract.Face[]> DetectAsync(string imageUrl, bool returnFaceId = true, bool returnFaceLandmarks = false, IEnumerable<FaceAttributeType> returnFaceAttributes = null);
+
+        /// <summary>
+        /// Detects an image asynchronously.
+        /// </summary>
+        /// <param name="imageStream">The image stream.</param>
+        /// <param name="returnFaceId">If set to <c>true</c> [return face ID].</param>
+        /// <param name="returnFaceLandmarks">If set to <c>true</c> [return face landmarks].</param>
+        /// <param name="returnFaceAttributes">Return face attributes.</param>  
+        /// <returns>The detected faces.</returns>
+        Task<Microsoft.ProjectOxford.Face.Contract.Face[]> DetectAsync(Stream imageStream, bool returnFaceId = true, bool returnFaceLandmarks = false, IEnumerable<FaceAttributeType> returnFaceAttributes = null);
+
+        /// <summary>
+        /// Finds the similar faces asynchronously.
+        /// </summary>
+        /// <param name="faceId">The face identifier.</param>
+        /// <param name="faceIds">The face identifiers.</param>
+        /// <param name="maxNumOfCandidatesReturned">The max number of candidates returned.</param>
+        /// <returns>
+        /// The similar faces.
+        /// </returns>
+        Task<SimilarFace[]> FindSimilarAsync(Guid faceId, Guid[] faceIds, int maxNumOfCandidatesReturned = 20);
+
+        /// <summary>
+        /// Finds the similar faces asynchronously.
+        /// </summary>
+        /// <param name="faceId">The face identifier.</param>
+        /// <param name="faceIds">The face identifiers.</param>
+        /// <param name="mode">Algorithm mode option, default as "matchPerson".</param>
+        /// <param name="maxNumOfCandidatesReturned">The max number of candidates returned.</param>
+        /// <returns>
+        /// The similar faces.
+        /// </returns>
+        Task<SimilarFace[]> FindSimilarAsync(Guid faceId, Guid[] faceIds, FindSimilarMatchMode mode, int maxNumOfCandidatesReturned = 20);
+
+        /// <summary>
+        /// Finds the similar faces asynchronously.
+        /// </summary>
+        /// <param name="faceId">The face identifier.</param>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <param name="maxNumOfCandidatesReturned">The max number of candidates returned.</param>
+        /// <returns>
+        /// The similar persisted faces.
+        /// </returns>
+        Task<SimilarPersistedFace[]> FindSimilarAsync(Guid faceId, string faceListId, int maxNumOfCandidatesReturned = 20);
+
+        /// <summary>
+        /// Finds the similar faces asynchronously.
+        /// </summary>
+        /// <param name="faceId">The face identifier.</param>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <param name="mode">Algorithm mode option, default as "matchPerson".</param>
+        /// <param name="maxNumOfCandidatesReturned">The max number of candidates returned.</param>
+        /// <returns>
+        /// The similar persisted faces.
+        /// </returns>
+        Task<SimilarPersistedFace[]> FindSimilarAsync(Guid faceId, string faceListId, FindSimilarMatchMode mode, int maxNumOfCandidatesReturned = 20);
+
+        /// <summary>
+        /// Gets the face list asynchronously.
+        /// </summary>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <returns>Face list object.</returns>
+        Task<FaceList> GetFaceListAsync(string faceListId);
+
+        /// <summary>
+        /// Gets a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <returns>The person entity.</returns>
+        Task<Person> GetPersonAsync(string personGroupId, Guid personId);
+
+        /// <summary>
+        /// Gets a face of a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <param name="persistedFaceId">The persisted face id.</param>
+        /// <returns>The person face entity.</returns>
+        Task<PersonFace> GetPersonFaceAsync(string personGroupId, Guid personId, Guid persistedFaceId);
+
+        /// <summary>
+        /// Gets a person group asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <returns>The person group entity.</returns>
+        Task<PersonGroup> GetPersonGroupAsync(string personGroupId);
+
+        /// <summary>
+        /// Asynchronously list the first 1000 person groups.
+        /// </summary>
+        /// <returns>Person group entity array.</returns>
+        [Obsolete("use ListPersonGroupsAsync instead")]
+        Task<PersonGroup[]> GetPersonGroupsAsync();
+
+        /// <summary>
+        /// Asynchronously list the top person groups whose Id is larger than "start".
+        /// </summary>
+        /// <param name="start">the start point string in listing person groups</param>
+        /// <param name="top">the number of person groups to list</param>
+        /// <returns>Person group entity array.</returns>
+        Task<PersonGroup[]> ListPersonGroupsAsync(string start = "", int top = 1000);
+
+        /// <summary>
+        /// Gets person group training status asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <returns>The person group training status.</returns>
+        Task<TrainingStatus> GetPersonGroupTrainingStatusAsync(string personGroupId);
+
+        /// <summary>
+        /// Gets all persons inside a person group asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <returns>
+        /// The person entity array.
+        /// </returns>
+        Task<Person[]> GetPersonsAsync(string personGroupId);
+
+        /// <summary>
+        /// Groups the face asynchronously.
+        /// </summary>
+        /// <param name="faceIds">The face ids.</param>
+        /// <returns>Task object.</returns>
+        Task<GroupResult> GroupAsync(Guid[] faceIds);
+
+        /// <summary>
+        /// Identities the faces in a given person group asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="faceIds">The face ids.</param>
+        /// <param name="maxNumOfCandidatesReturned">The maximum number of candidates returned for each face.</param>
+        /// <returns>The identification results</returns>
+        Task<IdentifyResult[]> IdentifyAsync(string personGroupId, Guid[] faceIds, int maxNumOfCandidatesReturned = 1);
+
+        /// <summary>
+        /// Identities the faces in a given person group asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="faceIds">The face ids.</param>
+        /// <param name="maxNumOfCandidatesReturned">The maximum number of candidates returned for each face.</param>
+        /// <param name="confidenceThreshold">user-specified confidence threshold.</param>
+        /// <returns>The identification results</returns>
+        Task<IdentifyResult[]> IdentifyAsync(string personGroupId, Guid[] faceIds, float confidenceThreshold, int maxNumOfCandidatesReturned = 1);
+
+        /// <summary>
+        /// Lists the face lists asynchronously.
+        /// </summary>
+        /// <returns>FaceListMetadata array.</returns>
+        Task<FaceListMetadata[]> ListFaceListsAsync();
+
+        /// <summary>
+        /// Trains the person group asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <returns>Task object.</returns>
+        Task TrainPersonGroupAsync(string personGroupId);
+
+        /// <summary>
+        /// Updates the face list asynchronously.
+        /// </summary>
+        /// <param name="faceListId">The face list identifier.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>Task object.</returns>
+        Task UpdateFaceListAsync(string faceListId, string name, string userData);
+
+        /// <summary>
+        /// Updates a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="personId">The person id.</param> 
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>Task object.</returns>
+        Task UpdatePersonAsync(string personGroupId, Guid personId, string name, string userData = null);
+
+        /// <summary>
+        /// Updates a face of a person asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="personId">The person id.</param>
+        /// <param name="persistedFaceId">The persisted face id.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>Task object.</returns>
+        Task UpdatePersonFaceAsync(string personGroupId, Guid personId, Guid persistedFaceId, string userData = null);
+
+        /// <summary>
+        /// Updates a person group asynchronously.
+        /// </summary>
+        /// <param name="personGroupId">The person group id.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns>Task object.</returns>
+        Task UpdatePersonGroupAsync(string personGroupId, string name, string userData = null);
+
+        /// <summary>
+        /// Verifies whether the specified two faces belong to the same person asynchronously.
+        /// </summary>
+        /// <param name="faceId1">The face id 1.</param>
+        /// <param name="faceId2">The face id 2.</param>
+        /// <returns>The verification result.</returns>
+        Task<VerifyResult> VerifyAsync(Guid faceId1, Guid faceId2);
+
+        /// <summary>
+        /// Verify whether one face belong to a person.
+        /// </summary>
+        /// <param name="faceId"></param>
+        /// <param name="personGroupId"></param>
+        /// <param name="personId"></param>
+        /// <returns></returns>
+        Task<VerifyResult> VerifyAsync(Guid faceId, string personGroupId, Guid personId);
+
+        #endregion Methods
+    }
+}﻿//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/ProjectOxford-ClientSDK
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+using System;
+
+namespace Microsoft.ProjectOxford.Common
+{
+    /// <summary>
+    /// Container of ClientError and Error Entity.
+    /// </summary>
+    public class ClientError
+    {
+        /// <summary>
+        /// Gets or sets error code in error entity.
+        /// </summary>
+        /// <value>
+        /// The code of client error.
+        /// </value>
+        public string Code
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the message.
+        /// </summary>
+        /// <value>
+        /// The message.
+        /// </value>
+        public string Message
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the request identifier.
+        /// </summary>
+        /// <value>
+        /// The request identifier.
+        /// </value>
+        public Guid RequestId
+        {
+            get;
+            set;
+        }
+    }
+}
+﻿// 
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+// 
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+// 
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/ProjectOxford-ClientSDK
+// 
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+// 
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+// 
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+// 
+
+using System;
+using System.Net;
+
+namespace Microsoft.ProjectOxford.Common
+{
+    /// <summary>
+    /// The Exception will be shown to client.
+    /// </summary>
+    public class ClientException : Exception
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ClientException"/> class.
+        /// </summary>
+        public ClientException()
+            : base()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ClientException"/> class.
+        /// </summary>
+        /// <param name="message">The corresponding error message.</param>
+        public ClientException(string message)
+            : base(message)
+        {
+            this.Error = new ClientError()
+            {
+                Code = HttpStatusCode.InternalServerError.ToString(),
+                Message = message
+            };
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ClientException"/> class.
+        /// </summary>
+        /// <param name="message">The corresponding error message.</param>
+        /// <param name="httpStatus">The Http Status code.</param>
+        public ClientException(string message, HttpStatusCode httpStatus)
+            : base(message)
+        {
+            this.HttpStatus = httpStatus;
+
+            this.Error = new ClientError()
+            {
+                Code = this.HttpStatus.ToString(),
+                Message = message
+            };
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ClientException"/> class.
+        /// </summary>
+        /// <param name="message">The corresponding error message.</param>
+        /// <param name="innerException">The inner exception.</param>
+        public ClientException(string message, Exception innerException)
+            : base(message, innerException)
+        {
+            this.Error = new ClientError()
+            {
+                Code = HttpStatusCode.InternalServerError.ToString(),
+                Message = message
+            };
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ClientException"/> class.
+        /// </summary>
+        /// <param name="message">The corresponding error message.</param>
+        /// <param name="errorCode">The error code.</param>
+        /// <param name="httpStatus">The http status.</param>
+        /// <param name="innerException">The inner exception.</param>
+        public ClientException(string message, string errorCode, HttpStatusCode httpStatus, Exception innerException)
+            : base(message, innerException)
+        {
+            this.HttpStatus = httpStatus;
+
+            this.Error = new ClientError()
+            {
+                Code = errorCode,
+                Message = message
+            };
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ClientException"/> class.
+        /// </summary>
+        /// <param name="error">The error entity.</param>
+        /// <param name="httpStatus">The http status.</param>
+        public ClientException(ClientError error, HttpStatusCode httpStatus)
+        {
+            this.Error = error;
+            this.HttpStatus = httpStatus;
+        }
+
+        /// <summary>
+        /// Gets http status of http response.
+        /// </summary>
+        /// <value>
+        /// The HTTP status.
+        /// </value>
+        public HttpStatusCode HttpStatus { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the httpError message.
+        /// </summary>
+        /// <value>
+        /// The error.
+        /// </value>
+        public ClientError Error { get; set; }
+
+        /// <summary>
+        /// Create Client Exception of Bad Request.
+        /// </summary>
+        /// <param name="message">The corresponding error message.</param>
+        /// <returns>Client Exception Instance.</returns>
+        public static ClientException BadRequest(string message)
+        {
+            return new ClientException(
+                new ClientError()
+                {
+                    Code = ((int)HttpStatusCode.BadRequest).ToString(),
+                    Message = message
+                },
+                HttpStatusCode.BadRequest);
+        }
+    }
+}﻿// 
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+// 
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+// 
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/ProjectOxford-ClientSDK
+// 
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+// 
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+// 
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+// 
+
+namespace Microsoft.ProjectOxford.Common
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public class Rectangle
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Left { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Top { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Width { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Height { get; set; }
+
+        #region overrides
+        public override bool Equals(object o)
+        {
+            if (o == null) return false;
+
+            var other = o as Rectangle;
+
+            if (other == null) return false;
+
+            return this.Left == other.Left &&
+                this.Top == other.Top &&
+                this.Width == other.Width &&
+                this.Height == other.Height;
+        }
+
+        public override int GetHashCode()
+        {
+            return Left.GetHashCode() ^ Top.GetHashCode() ^ Width.GetHashCode() ^ Height.GetHashCode();
+        }
+        #endregion
+    }
+}
+﻿// 
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+// 
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+// 
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/ProjectOxford-ClientSDK
+// 
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+// 
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+// 
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+// 
+
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+using System.Linq;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+
+namespace Microsoft.ProjectOxford.Common
+{
+    public abstract class ServiceClient
+    {
+        protected class UrlReqeust
+        {
+            public string url { get; set; }
+        }
+
+        public class WrappedClientError
+        {
+            public ClientError Error { get; set; }
+        }
+            
+        #region private/protected members
+
+        /// <summary>
+        /// The header's key name of asset url.
+        /// </summary>
+        private static string OperationLocation = "Operation-Location";
+
+        /// <summary>
+        /// The default resolver.
+        /// </summary>
+        protected static CamelCasePropertyNamesContractResolver s_defaultResolver = new CamelCasePropertyNamesContractResolver();
+
+        protected static JsonSerializerSettings s_settings = new JsonSerializerSettings()
+        {
+            DateFormatHandling = DateFormatHandling.IsoDateFormat,
+            NullValueHandling = NullValueHandling.Ignore,
+            ContractResolver = s_defaultResolver
+        };
+
+        private readonly HttpClient _httpClient;
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        protected ServiceClient() : this(new HttpClient())
+        {
+        }
+
+        /// <summary>
+        ///  Test constructor; use to inject mock clients.
+        /// </summary>
+        /// <param name="httpClient">Custom HttpClient, for testing.</param>
+        protected ServiceClient(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
+
+        /// <summary>
+        /// Root of the API URL.  Must not end in slash.
+        /// </summary>
+        protected string ApiRoot { get; set; }
+
+        /// <summary>
+        /// Header name for authorization.
+        /// </summary>
+        protected string AuthKey { get; set; }
+
+        /// <summary>
+        /// Header value for authorization.
+        /// </summary>
+        protected string AuthValue { get; set; }
+        #endregion
+
+        #region the JSON client
+        /// <summary>
+        /// Helper method executing a GET REST request.
+        /// </summary>
+        /// <typeparam name="TRequest">Type of request.</typeparam>
+        /// <typeparam name="TResponse">Type of response.</typeparam>
+        /// <param name="apiUrl">API URL relative to the apiRoot</param>
+        /// <param name="requestBody">Content of the HTTP request.</param>
+        /// <returns>TResponse</returns>
+        /// <exception cref="ClientException">Service exception</exception>
+        protected async Task<TResponse> PostAsync<TRequest, TResponse>(string apiUrl, TRequest requestBody)
+        {
+            return await SendAsync<TRequest, TResponse>(HttpMethod.Post, apiUrl, requestBody);
+        }
+
+        /// <summary>
+        /// Helper method executing a POST REST request.
+        /// </summary>
+        /// <typeparam name="TRequest">Type of request.</typeparam>
+        /// <typeparam name="TResponse">Type of response.</typeparam>
+        /// <param name="apiUrl">API URL relative to the apiRoot</param>
+        /// <param name="requestBody">Content of the HTTP request.</param>
+        /// <returns>TResponse</returns>
+        /// <exception cref="ClientException">Service exception</exception>
+        protected async Task<TResponse> GetAsync<TRequest, TResponse>(string apiUrl, TRequest requestBody)
+        {
+            return await SendAsync<TRequest, TResponse>(HttpMethod.Get, apiUrl, requestBody);
+        }
+
+        /// <summary>
+        /// Helper method executing a REST request.
+        /// </summary>
+        /// <typeparam name="TRequest">Type of request.</typeparam>
+        /// <typeparam name="TResponse">Type of response.</typeparam>
+        /// <param name="method">HTTP method</param>
+        /// <param name="apiUrl">API URL, generally relative to the ApiRoot</param>
+        /// <param name="requestBody">Content of the HTTP request</param>
+        /// <returns>TResponse</returns>
+        /// <exception cref="ClientException">Service exception</exception>
+        protected async Task<TResponse> SendAsync<TRequest, TResponse>(HttpMethod method, string apiUrl, TRequest requestBody)
+        {
+            bool urlIsRelative = System.Uri.IsWellFormedUriString(apiUrl, System.UriKind.Relative);
+
+            string requestUri = urlIsRelative ? ApiRoot + apiUrl : apiUrl;
+            var request = new HttpRequestMessage(method, requestUri);
+            request.Headers.Add(AuthKey, AuthValue);
+
+            if (requestBody != null)
+            {
+                if (requestBody is Stream)
+                {
+                    request.Content = new StreamContent(requestBody as Stream);
+                    request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                }
+                else
+                {
+                    request.Content = new StringContent(JsonConvert.SerializeObject(requestBody, s_settings), Encoding.UTF8, "application/json");
+                }
+            }
+
+            HttpResponseMessage response = await _httpClient.SendAsync(request);
+            if (response.IsSuccessStatusCode)
+            {
+                string responseContent = null;
+                if (response.Content != null)
+                {
+                    responseContent = await response.Content.ReadAsStringAsync();
+                }
+
+                if (!string.IsNullOrWhiteSpace(responseContent))
+                {
+                    return JsonConvert.DeserializeObject<TResponse>(responseContent, s_settings);
+                }
+
+                // For video submission, the response content is empty. The information is in the
+                // response headers. 
+                var output = System.Activator.CreateInstance<TResponse>();
+                if (output is Contract.VideoOperation)
+                {
+                    var operation = output as Contract.VideoOperation;
+                    operation.Url = response.Headers.GetValues(OperationLocation).First();
+                    return output;
+                }
+
+                return default(TResponse);
+            }
+            else
+            {
+                if (response.Content != null && response.Content.Headers.ContentType.MediaType.Contains("application/json"))
+                {
+                    var errorObjectString = await response.Content.ReadAsStringAsync();
+                    var wrappedClientError = JsonConvert.DeserializeObject<WrappedClientError>(errorObjectString);
+                    if (wrappedClientError?.Error != null)
+                    {
+                        throw new ClientException(wrappedClientError.Error, response.StatusCode);
+                    }
+                }
+
+                response.EnsureSuccessStatusCode();
+            }
+
+            return default(TResponse);
+        }
+        #endregion
+    }
+}
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Microsoft.ProjectOxford.Common.Contract
+{
+    /// <summary>
+    /// Face object returned as part of the FaceDetection/EmotionRecognition operations.
+    /// </summary>
+    public class VideoFace
+    {
+        /// <summary>
+        /// Gets or sets Id of face.
+        /// </summary>
+        public int FaceId { get; set; }
+    }
+}
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/ProjectOxford-ClientSDK
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+using System;
+
+namespace Microsoft.ProjectOxford.Common.Contract
+{
+    /// <summary>
+    /// Generic class for representing fragments.
+    /// A fragment represents a span of time in the video.  Fragments will not overlap in time.
+    /// </summary>
+    /// <typeparam name="T">Type representing the event type specific to the action.</typeparam>
+    public class VideoFragment<T>
+    {
+        /// <summary>
+        /// Gets or sets timestamp of the first event, in ticks.
+        /// </summary>
+        public Int64 Start { get; set; }
+
+        /// <summary>
+        /// Gets or sets overall duration of the fragment, in ticks.
+        /// </summary>
+        public Int64 Duration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the duration of each event, in ticks.  Optional if no events are present.
+        /// Note: Duration = Interval * Events.length.
+        /// </summary>
+        public Int64? Interval { get; set; }
+
+        /// <summary>
+        /// Gets or sets array of list of events.  Each array entry is Interval units long in ticks.
+        /// </summary>
+        public T[][] Events { get; set; }
+    }
+}
+﻿// 
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+// 
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+// 
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/ProjectOxford-ClientSDK
+// 
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+// 
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+// 
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+// 
+
+namespace Microsoft.ProjectOxford.Common.Contract
+{
+    /// <summary>
+    /// Opaque object representing a video operation.
+    /// </summary>
+    public class VideoOperation
+    {
+        /// <summary>
+        /// Operation URL representing one video operation
+        /// </summary>
+        public string Url { get; set; }
+    }
+}
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/ProjectOxford-ClientSDK
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+using System;
+
+namespace Microsoft.ProjectOxford.Common.Contract
+{
+    /// <summary>
+    /// The operation result class.  This object represents over-the-wire data format.
+    /// </summary>
+    public class VideoOperationInfoResult<T> : VideoOperationResult
+    {
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public VideoOperationInfoResult()
+        {
+        }
+
+        /// <summary>
+        /// CConstructor; invokes the copy constructor for the base
+        /// </summary>
+        /// <param name="other"></param>
+        /// <param name="processingResult"></param>
+        public VideoOperationInfoResult(VideoOperationResult other, T processingResult) : base(other)
+        {
+            ProcessingResult = processingResult;
+        }
+
+        /// <summary>
+        /// Gets or sets the processing result.
+        /// </summary>
+        /// <value>
+        /// The processing result.
+        /// </value>
+        public T ProcessingResult { get; set; }
+    }
+}
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Microsoft.ProjectOxford.Common.Contract
+{
+    public abstract class VideoOperationResult
+    {
+        public VideoOperationResult()
+        {
+
+        }
+
+        /// <summary>
+        /// Protected copy constructor
+        /// </summary>
+        /// <param name="other">Result from which to copy.</param>
+        protected VideoOperationResult(VideoOperationResult other)
+        {
+            Status = other.Status;
+            CreatedDateTime = other.CreatedDateTime;
+            LastActionDateTime = other.LastActionDateTime;
+            Message = other.Message;
+            ResourceLocation = other.ResourceLocation;
+        }
+
+        /// <summary>
+        /// Gets or sets the status.
+        /// </summary>
+        /// <value>
+        /// The status.
+        /// </value>
+        public VideoOperationStatus Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets the created date time.
+        /// </summary>
+        /// <value>
+        /// The created date time.
+        /// </value>
+        public DateTime CreatedDateTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last action date time.
+        /// </summary>
+        /// <value>
+        /// The last action date time.
+        /// </value>
+        public DateTime LastActionDateTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the message.
+        /// </summary>
+        /// <value>
+        /// The message.
+        /// </value>
+        public string Message { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource location.
+        /// </summary>
+        /// <value>
+        /// The resource location.
+        /// </value>
+        public string ResourceLocation { get; set; }
+    }
+}
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/ProjectOxford-ClientSDK
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+namespace Microsoft.ProjectOxford.Common.Contract
+{
+    /// <summary>
+    /// The operation status.
+    /// </summary>
+    public enum VideoOperationStatus
+    {
+        /// <summary>
+        /// The not started
+        /// </summary>
+        NotStarted,
+
+        /// <summary>
+        /// The uploading
+        /// </summary>
+        Uploading,
+
+        /// <summary>
+        /// The running
+        /// </summary>
+        Running,
+
+        /// <summary>
+        /// The failed
+        /// </summary>
+        Failed,
+
+        /// <summary>
+        /// The succeeded
+        /// </summary>
+        Succeeded
+    }
+}
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license.
+//
+// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+//
+// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// https://github.com/Microsoft/ProjectOxford-ClientSDK
+//
+// Copyright (c) Microsoft Corporation
+// All rights reserved.
+//
+// MIT License:
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+using System;
+
+namespace Microsoft.ProjectOxford.Common.Contract
+{
+    /// <summary>
+    /// Common base class for top-level video result objects.
+    /// </summary>
+    public class VideoResultBase
+    {
+        /// <summary>
+        /// Gets or sets version of the JSON format.
+        /// </summary>
+        public int Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets tick unit, in Hertz.
+        /// </summary>
+        public double Timescale { get; set; }
+
+        /// <summary>
+        /// Gets or sets video offset, in ticks.
+        /// </summary>
+        public Int64 Offset { get; set; }
+
+        /// <summary>
+        /// Gets or sets rate of frames (frames/second).
+        /// </summary>
+        public double Framerate { get; set; }
+
+        /// <summary>
+        /// Gets or sets width of the frame, in pixels.
+        /// </summary>
+        public int Width { get; set; }
+
+        /// <summary>
+        /// Gets or sets height of frames, in pixels.
+        /// </summary>
+        public int Height { get; set; }
+
+        /// <summary>
+        /// Gets or sets rotation of the video, in degrees clockwise.
+        /// </summary>
+        public int? Rotation { get; set; }
+    }
+}
