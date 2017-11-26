@@ -57,7 +57,7 @@ log_number_of_parameters(z)
 
 minibatch_size=10
 
-for ep in range(10):
+for ep in range(20):
     print("Epoch={}".format(ep))
     for mb in range(0,len(words),minibatch_size):
         trainer.train_minibatch({input_var: words_arr[mb:mb+minibatch_size], label_var: labels_arr[mb:mb+minibatch_size]})
@@ -85,7 +85,7 @@ words_arr1 = [to_onehot(list(map(char_to_num,list(w)))) for w in words]
 input_var = sequence.input_variable(vocab_size)
 label_var = C.input_variable(2)
 
-model = Sequential([Recurrence(LSTM(200)),sequence.last,Dense(100,activation=C.relu),Dense(2)])
+model = Sequential([Recurrence(C.layers.RNNStep(200,activation=C.relu)),sequence.last,Dense(100,activation=C.relu),Dense(2)])
 
 z = model(input_var)
 z_sm = C.softmax(z)
@@ -102,7 +102,7 @@ log_number_of_parameters(z)
 
 minibatch_size = 10
 
-for ep in range(10):
+for ep in range(20):
     print("Epoch={}".format(ep))
     for mb in range(0, len(words), minibatch_size):
         trainer.train_minibatch(
