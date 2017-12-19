@@ -1,17 +1,16 @@
 from __future__ import print_function
 import numpy as np
-import os
-import sys
+import cntk
 from cntk import Trainer, Axis
 from cntk.learners import momentum_sgd, momentum_as_time_constant_schedule, learning_rate_schedule, UnitType
 from cntk.ops import sequence
 from cntk.losses import cross_entropy_with_softmax
 from cntk.metrics import classification_error
-from cntk.ops.functions import load_model
 from cntk.layers import LSTM, Stabilizer, Recurrence, Dense, For, Sequential
 from cntk.logging import log_number_of_parameters, ProgressPrinter
 
 data = open("d:\\work\\NeuroWorkshop\\Data\\texts\\Alice.txt", "r",encoding="utf-8").read()
+data = data[0:len(data)//3].lower()
 chars = sorted(list(set(data)))
 data_size, vocab_size = len(data), len(chars)
 print('data has %d characters, %d unique.' % (data_size, vocab_size))
@@ -20,7 +19,7 @@ ix_to_char = { i:ch for i,ch in enumerate(chars) }
 
 
 minibatch_size=100
-def sample(p):
+def get_sample(p):
     xi = [char_to_ix[ch] for ch in data[p:p+minibatch_size]]
     yi = [char_to_ix[ch] for ch in data[p+1:p+minibatch_size+1]]
     
@@ -28,14 +27,11 @@ def sample(p):
     Y = np.eye(vocab_size, dtype=np.float32)[yi]
 
     return [X], [Y]
-sample(0)
 
+get_sample(0)
 
-input_seq_axis = Axis('inputAxis')
-input_sequence = sequence.input_variable(shape=vocab_size, sequence_axis=input_seq_axis)
-label_sequence = sequence.input_variable(shape=vocab_size, sequence_axis=input_seq_axis)
-
-# model = Sequential([Dense(300),Dense(vocab_size)])
+input_sequence = sequence.input_variable(shape=vocab_size)
+label_sequence = sequence.input_variable(shape=vocab_size)
 
 model = Sequential([
         For(range(2), lambda:
@@ -43,6 +39,7 @@ model = Sequential([
         Dense(vocab_size)])
 
 z = model(input_sequence)
+z_sm = cntk.softmax(z)
 
 ce = cross_entropy_with_softmax(z, label_sequence)
 errs = classification_error(z, label_sequence)
@@ -58,16 +55,6 @@ progress_printer = ProgressPrinter(freq=100, tag='Training')
 trainer = Trainer(z, (ce, errs), learner, progress_printer)
     
 log_number_of_parameters(z)
-
-
-for ep in range(1):
-    print("Epoch={}".format(ep))
-    m = [True]
-    for mb in range(data_size-minibatch_size-1):
-        feat,lab = sample(mb)
-        trainer.train_minibatch({input_sequence: feat, label_sequence: lab})
-        m=[False]
-
 
 def sample(net, prime_text='', use_hardmax=True, length=100, temperature=1.0):
 
@@ -129,4 +116,15 @@ def sample(net, prime_text='', use_hardmax=True, length=100, temperature=1.0):
     # преобразуем к строке и возвращаем
     return ''.join([ix_to_char[c] for c in output])
 
-sample(z,'Hello',False)
+
+for ep in range(1):
+    print("Epoch={}".format(ep))
+    m = [True]
+    for mb in range(0,data_size-minibatch_size-1,10):
+        feat,lab = get_sample(mb)
+        trainer.train_minibatch({input_sequence: feat, label_sequence: lab})
+        m=[False]
+    print(sample(z_sm,'',True,length=300).replace("\n"," "))
+
+
+sample(z,'hello',True)

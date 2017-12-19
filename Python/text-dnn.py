@@ -11,7 +11,7 @@ from cntk.layers import LSTM, Stabilizer, Recurrence, Dense, For, Sequential
 from cntk.logging import log_number_of_parameters, ProgressPrinter
 
 data = open("d:\\work\\NeuroWorkshop\\Data\\texts\\Alice.txt",encoding="utf-8").read()
-data = data[0:len(data)//10]
+data = data[0:len(data)//4].lower()
 chars = sorted(list(set(data)))
 data_size, vocab_size = len(data), len(chars)
 print('data has %d characters, %d unique.' % (data_size, vocab_size))
@@ -33,9 +33,10 @@ get_sample(0)
 input_text = C.input_variable((nchars,vocab_size))
 output_char = C.input_variable(shape=vocab_size)
 
-model = Sequential([Dense(3000,activation=C.relu),Dense(vocab_size,activation=None)])
+model = Sequential([Dense(6000,activation=C.relu),Dense(vocab_size,activation=None)])
 
 z = model(input_text)
+z_sm = C.softmax(z)
 
 ce = cross_entropy_with_softmax(z, output_char)
 errs = classification_error(z, output_char)
@@ -47,12 +48,6 @@ progress_printer = ProgressPrinter(freq=100, tag='Training')
 trainer = Trainer(z, (ce, errs), learner, progress_printer)
     
 log_number_of_parameters(z)
-
-for ep in range(1):
-    print("Epoch={}".format(ep))
-    for mb in range(0,data_size-nchars-1):
-        feat,lab = get_sample(mb)
-        trainer.train_minibatch({input_text: feat, output_char: lab})
 
 def sample(net, prime_text='', use_hardmax=True, length=100, temperature=1.0):
 
@@ -76,7 +71,8 @@ def sample(net, prime_text='', use_hardmax=True, length=100, temperature=1.0):
 
     if (len(prime_text)<nchars): prime_text = " "*(nchars-len(prime_text))+prime_text
 
-    out = prime_text+"|";
+    #out = prime_text+"|";
+    out = "";
 
     inp = np.eye(vocab_size,dtype=np.float32)[np.array([char_to_ix[x] for x in prime_text])]
 
@@ -89,4 +85,14 @@ def sample(net, prime_text='', use_hardmax=True, length=100, temperature=1.0):
         inp[-1,:] = np.eye(vocab_size,dtype=np.float32)[ochr]
     return out
 
+
+
+for ep in range(1):
+    print("Epoch={}".format(ep))
+    for mb in range(0,data_size-nchars-1,28):
+        feat,lab = get_sample(mb)
+        trainer.train_minibatch({input_text: feat, output_char: lab})
+    print(sample(z_sm,'',True,length=300).replace("\n"," "))
+
+print(sample(z_sm,'',False,length=300).replace("\n"," "))
 sample(C.softmax(z), 'A quick brown fox jumped over the lazy sleeping dog. While I was reading this text, something happen',length=300,use_hardmax=True)
