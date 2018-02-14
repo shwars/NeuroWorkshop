@@ -12,7 +12,7 @@
 ## О чем будет рассказано на интенсиве
 
   * Microsoft и искусственный интеллект - стратегия
-  * [Введение в нейросети - персептроны](Notebooks/Perceptron.ipynb)
+  * [Введение в нейросети - персептроны](Notebooks/Perceptrons.ipynb)
   * [Многослойные сети прямого распространения на CNTK](Notebooks/IntroCNTK.ipynb)
       - [Лабораторная работа: Iris Dataset](Notebooks/Lab_Iris.ipynb)
       - [Лабораторная работа: MNIST Dataset](Notebooks/Lab_MNIST.ipynb)
