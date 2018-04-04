@@ -9,16 +9,16 @@ import azure.mgmt.batchai.models as models
 import azure.mgmt.batchai as batchai
 from azure.common.credentials import ServicePrincipalCredentials
 
-tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47"
-subscription = "d04ba089-715a-45b1-b4a3-2ce0fd60316f"
+tenant = "<Insert Correct Value Here>"
+subscription = "<Insert Correct Value Here>"
 resource_group_name = "batchai"
 
-credentials = ServicePrincipalCredentials(client_id="9ecbb7b5-7689-4abb-8348-e32b14e4197c",
-                                          secret="Ortal13!",
+credentials = ServicePrincipalCredentials(client_id="<Insert Correct Value Here>",
+                                          secret="<Insert Correct Value Here>",
                                           token_uri="https://login.microsoftonline.com/{0}/oauth2/token".format(tenant))
 client = batchai.BatchAIManagementClient(
     credentials=credentials,
-    subscription_id="d04ba089-715a-45b1-b4a3-2ce0fd60316f",
+    subscription_id=subscription,
     base_url="")
 
 from azure.mgmt.resource import ResourceManagementClient
@@ -30,8 +30,8 @@ group = resource_management_client.resource_groups.create_or_update(
 
 from azure.storage.file import FileService
 
-storage_account_name = "batchaidemo"
-storage_account_key = "c4DBnKV6YbViBmahp9wpLTXacECUdYwKE8uKiWI6rMCeaGme2IVTPGaujil0WgSyZV0xVqockORzdNmGexONsg=="
+storage_account_name = "<Insert Correct Value Here>"
+storage_account_key = "<Insert Correct Value Here>"
 fileshare = "data"
 
 filesystem = FileService(storage_account_name, storage_account_key)
