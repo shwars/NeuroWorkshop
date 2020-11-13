@@ -1,4 +1,4 @@
-﻿# NeuroWorkshop
+# NeuroWorkshop
 ## Интенсив по нейронным сетям и глубокому обучению
 
 Данный интенсив предназначен как первоначальное введение в тематику нейронных сетей для разработчиков, желающих применять соответствующие технлологии в своих проектах. Интенсив проводился в рамках [большой июньской школы DevCon 2017](http://events.techdays.ru/Future-Technologies/2017-06/).
@@ -7,7 +7,7 @@
 
 Для общения - присоединяйтесь к чату [@neuroworkshop](http://telegram.me/neuroworkshop)
 
-Первым делом - [зайдите сюда](https://notebooks.azure.com/sosh/libraries/neuroworkshop)
+Первым делом - [зайдите сюда](https://notebooks.azure.com/sosh/libraries/neuroworkshop?WT.mc_id=academic-0000-dmitryso)
 
 ## О чем будет рассказано на интенсиве
 
@@ -27,12 +27,12 @@
 ## Первые шаги
 
 Для проведения интенсива вам потребуется:
-  * **Возможность работать с [Azure Notebooks](http://notebooks.azure.com)**, т.е. компьютер с браузером и Microsoft Account. Создать Microsoft Account можно на http://outlook.com, заведя там почтовый ящик.
+  * **Возможность работать с [Azure Notebooks](https://notebooks.azure.com/?WT.mc_id=academic-0000-dmitryso)**, т.е. компьютер с браузером и Microsoft Account. Создать Microsoft Account можно на http://outlook.com, заведя там почтовый ящик.
   * **Виртуальная машина с GPU в облаке Microsoft Azure** (для выполнения финального задания). Для этого нужна подписка на Microsoft Azure.
 
 ### Делаем копию всех материалов в Azure Notebooks
 
- 1. Заходим по адресу https://notebooks.azure.com/sosh/libraries/neuroworkshop
+ 1. Заходим по адресу https://notebooks.azure.com/sosh/libraries/neuroworkshop?WT.mc_id=academic-0000-dmitryso
  2. Нажимаем **Clone and Run**
  3. При необходимости заходим с Microsoft Account.
 
@@ -44,7 +44,7 @@
 
   1. На мероприятии, если вам раздали код Azure Pass - следуем инструкции http://aka.ms/azpass
   2. Если вы смотрите онлайн или решили пройти мастер-класс самостоятельно - получаем trial-подписку на месяц 
-     [по ссылке](https://azure.microsoft.com/ru-ru/free/). Для этого потребуется кредитная карта.
+     [по ссылке](https://azure.microsoft.com/free/?WT.mc_id=academic-0000-dmitryso). Для этого потребуется кредитная карта.
 
 В обоих случаях **надо использовать Microsoft Account, который не был привязан ранее к облачной подписке**. В противном случае вы не сможете привязать к такому аккаунту пробную подписку.
 
@@ -80,12 +80,12 @@
 
 Если вам не удалось создать в облаке свою виртуальную машину, вы можете воспользоваться одной из доступных лабораторных машин:
 
-  * https://smart1.southcentralus.cloudapp.azure.com:9999
-  * https://smart2.eastus.cloudapp.azure.com:9999
-  * https://smart8.southcentralus.cloudapp.azure.com:9999
+  * https://smart1.southcentralus.cloudapp.azure.com:9999/?WT.mc_id=academic-0000-dmitryso
+  * https://smart2.eastus.cloudapp.azure.com:9999/?WT.mc_id=academic-0000-dmitryso
+  * https://smart8.southcentralus.cloudapp.azure.com:9999/?WT.mc_id=academic-0000-dmitryso
 
 Пароль и инструкции будут предоставлены на занятии.
 
 ## Полезные материалы 
 
- * [Стандартные примеры по CNTK в Azure Notebooks](https://notebooks.azure.com/cntk/libraries/tutorials)
+ * [Стандартные примеры по CNTK в Azure Notebooks](https://notebooks.azure.com/cntk/libraries/tutorials?WT.mc_id=academic-0000-dmitryso)
